@@ -44,8 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleLogger.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IMessageFormatter.cs" />
     <Compile Include="IWorker.cs" />
+    <Compile Include="LogExtensions.cs" />
+    <Compile Include="LogType.cs" />
+    <Compile Include="MessageFormatterWithLogTypeInfo.cs" />
+    <Compile Include="MessageFormatterWithTimeStamp.cs" />
+    <Compile Include="PassThroughMessageFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
