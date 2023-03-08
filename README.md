@@ -1,52 +1,26 @@
-# Welcome
+## ToolWatch Logger
 
-Included below are the instructions for the ToolWatch C# code exercise.  We're glad to have you here.  Good luck!
+This simple lightweight logging library allows you to log messages for your .net projects. Currently, there is only one logger available - `ConsoleLogger`. Yet, the power of this library lies in its extensibility. One can easily extend the library to add more kinds of logger such as file logger, database logger and such. The library also allows you to pass a formatter to format your message the way you want it. Extensions methods are provided to make logging less verbose (pun intended).
 
-## Your Mission
+### Using the library
 
-**The goal of this code exercise it to create a simple logging library.**
+#### Getting Started
+Right now the library is provided as a project and not as a nuget package. Start by adding the project directly.
 
-The logging library should consist of:
+Create an instance of `ConsoleLogger` and call `Log()` method passing a message and the log type.
+```cs
+var logger = new ConsoleLogger();
+logger.Log("log this message", LogType.Debug);
+```
 
-1) A simple interface to define the essential behavior of a log
+By default `ConsoleLogger` logs any messages despite the log type as the default is set to `None`.
+You can customize this by passing a different log type. Also, it uses a pass through formatter which doesn't format the message at all.
 
-2) At least one concrete implementation that facilitates testing, and a suite of tests that assert the correct behavior of the library
+A message is only logged if the set level is higher or equal to the intented log type. So, for an example, if LogLevel set for console is `INFO`, any level higher or equals to Info is logged - in this case `DEBUG`, `WARNING`, `CRITCIAL` etc. However, `VERBOSE`, being lower in the order than `INFO` is ignored.
 
-3) At least one concrete instance that is suitable for use in production
-
-4) Support for segmenting logs by level (e.g. Debug, Information, Warning, etc.)
-
-5) Any other utilities to provide "syntactic sugar" when working with a log
-
-6) A README that explains the basic usage of the library and any other relevant information for users, contributors, or maintainers
-
-## Extra time?
-
-If you have additional time, think of how we can solve for additional use cases:
-
-1) How could we protect against sensetive information being accidently written to the logs?
-
-2) How could our library encourage us to store our logs in a way to make them more searchable?
-
-3) How could we support different retention policies for logs based on log level?
-
-## Think about future maintainers
-
-Code is maintained more than it is written.  Think about how easy your code will be for a future developer to understand and possibly extend.  Is there any subtle behavior that may surprise people?  Is the code simple enough to allow a junior programmer could understand it?
-
-## Tracking changes
-
-Ideally we would like to see you track your work in a version control system.
-
-## Some Caveats
-
-This is a fictitious scenario we have created in order to give you license to go write some original code.  Please do not just demonstrate the use of an existing logging library, either in Nuget or in dotnet proper.  The intent of this exercise is for you show us how you would design and build such a library.
-
-Similarly, please do not get distracted by working to have your logging library write to some specific logging store.  It would be nice to see that, but again we are mostly interested in *your* original code, not how you'd use someone else's code.
-
-Lastly, you were probably given a timebox for this exercise, which means you likely will not finish everything outlined above.  That is 100% OK.  Please treat the timebox the same way you would if you were on the team, and develop something minimally viable, and otherwise illustrative of where you would take the library if you had more time.
-
-## Closing thoughts
-
-We have tried to make this code exercise realistic, which means some things are a bit ambiguous or open ended.  Feel free to ask any questions, especially if you get blocked.
+### TODO
+* Create a Nuget package
+* Add more logger types
+* Add more formatters
+* Allow to pass exceptions for better stack tracing
 
