@@ -1,10 +1,14 @@
 ﻿namespace TW.DeveloperTest.Contracts
 {
-    public enum LogType
+    public enum LogType : ushort
     {
+        None = 0,
+        Verbose,
         Debug,
         Info, 
         Warning,
+        Error,
+        Critical
     }
     public interface ILogger
     {
